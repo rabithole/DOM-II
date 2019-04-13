@@ -61,13 +61,9 @@ const head = document.querySelector('header');
 const headH1 = document.querySelector('header h1')
 const navA = document.querySelectorAll('nav a')
 
-// const navA = document.getElementsByTagName('a');
-// const navA = document.querySelectorAll('nav a')
 console.log(navA)
-let counterScroll = 0;
-window.addEventListener('scroll', function() {
-	counterScroll++
-	if(counterScroll > 20){
+window.addEventListener('scroll', function() {	
+	if(scrollY > 80){
 		head.style.height = '20px'
 		headH1.style.fontSize = '1.5em'	
 		
@@ -75,4 +71,13 @@ window.addEventListener('scroll', function() {
 			navA[i].style.fontSize = '1em'
 		}
 	}
+	if(scrollY < 81){
+		head.style.height = '90px'
+		headH1.style.fontSize = '4rem'
+		
+		for(let i = 0; i < navA.length; i++){
+			navA[i].style.fontSize = '1.6em'
+		}	
+	}
 })
+
