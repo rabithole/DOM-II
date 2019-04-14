@@ -62,11 +62,15 @@ body.addEventListener('keydown', function(event) {
 
 const head = document.querySelector('header');
 const headH1 = document.querySelector('header h1')
-const navA = document.querySelectorAll('nav a')
+const navA = document.querySelectorAll('nav a');
 
-// navA.addEventListener('click', function(event){
-// 	event.preventDefault();
-// })
+(function navItems(){
+	for(let i = 0; i < navA.length; i++){
+		navA[i].addEventListener('click', function(event){
+			event.preventDefault();
+		})
+	}
+}());
 
 window.addEventListener('scroll', function() {	
 	if(scrollY > 80){
@@ -89,10 +93,7 @@ window.addEventListener('scroll', function() {
 
 body.addEventListener('keyup', function(event){
 	if(event.keyCode === 32){
-		// newElement.textContent = "You pushed the space bar!"
-		// newElement.classList.toggle('toggle')
 		alert('You let the space bar up!')
-		console.log('yes')
 	}
 })
 
@@ -108,8 +109,8 @@ window.addEventListener('load', function(event){
 const buttonBottomPage = document.querySelector('.btn')
 console.log(buttonBottomPage)
 
-buttonBottomPage.addEventListener('click', function(){
-	console.log(buttonBottomPage)
+buttonBottomPage.addEventListener('click', function(event){
+	event.stopPropagation();
 	newElement.style.top = '1600px'
 	newElement.textContent = "You'll just get burned, stay home!";
 	newElement.classList.toggle('toggle')
@@ -117,6 +118,11 @@ buttonBottomPage.addEventListener('click', function(){
 		newElement.style.top = '400px';
 		newElement.classList.toggle('toggle')
 	}, 3000);
+})
+
+const destination = document.querySelector('.destination');
+destination.addEventListener('click', function(){
+	console.log('yes yes yes')
 })
 
 let resized = 0;
@@ -135,10 +141,3 @@ window.addEventListener('resize', function(){
 		console.log(resized)
 	}, 6000);
 })
-
-const mapImage = document.querySelector('.img-content');
-
-mapImage.addEventListener('mouseup', function(){
-	console.log('moused up')
-})
-
